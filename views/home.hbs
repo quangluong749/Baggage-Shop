@@ -32,8 +32,7 @@
 <section class="collections">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 ab-content-img">
-
+            <div class="col-md-8 ab-content-img" style="background: url({{bannerImgs.travel}}) no-repeat center">
             </div>
             <div class="col-md-4 ab-content text-center p-lg-5 p-3 my-lg-5">
                 <h4>Travel Must Haves</h4>
@@ -55,7 +54,7 @@
 
 
             <div class="col-md-4 content-gd-wthree">
-                <img src="images/c1.jpg" class="img-fluid" alt="" />
+                <img src="{{bannerImgs.storeSpace1}}" class="img-fluid" alt="" />
             </div>
             <div class="col-md-4 content-gd-wthree ab-content py-lg-5 my-lg-5">
                 <h4>Need Extra Space ?</h4>
@@ -65,7 +64,7 @@
 
             </div>
             <div class="col-md-4 content-gd-wthree">
-                <img src="images/c2.jpg" class="img-fluid" alt="" />
+                <img src="{{bannerImgs.storeSpace2}}" class="img-fluid" alt="" />
             </div>
         </div>
 
@@ -76,14 +75,14 @@
 <section class="mid-section">
     <div class="d-lg-flex p-0">
         <div class="col-lg-6 bottom-w3pvt-left p-lg-0">
-            <img src="images/ab1.jpg" class="img-fluid" alt="" />
+            <img src="{{bannerImgs.sale1}}" class="img-fluid" alt="" />
             <div class="pos-wthree">
                 <h4 class="text-wthree">50% Off Any <br> Women's Bags</h4>
                 <a href="/shop" class="btn shop mt-3">Shop Now</a>
             </div>
         </div>
         <div class="col-lg-6 bottom-w3pvt-left bottom-w3pvt-right p-lg-0">
-            <img src="images/ab2.jpg" class="img-fluid" alt="" />
+            <img src="{{bannerImgs.sale2}}" class="img-fluid" alt="" />
             <div class="pos-w3pvt">
                 <h4 class="text-w3pvt">30% Off Any <br> Men's Bags</h4>
                 <a href="/shop" class="btn shop mt-3">Shop Now</a>
@@ -107,50 +106,23 @@
             </div>
             <div class="col-lg-8 gallery-content">
                 <div class="row">
+                    {{#each bannerImgs.trending}}
                     <div class="col-md-4 col-sm-6 gal-img">
-                        <a href="#gal1"><img src="images/g1.jpg" alt="Baggage" class="img-fluid mt-4"></a>
+                        <a href="#gal{{key}}"><img src="{{imgDir}}" alt="Baggage" class="img-fluid mt-4"></a>
                     </div>
-                    <div class="col-md-4 col-sm-6 gal-img">
-                        <a href="#gal2"><img src="images/g2.jpg" alt="Baggage" class="img-fluid mt-4"></a>
-                    </div>
-                    <div class="col-md-4 col-sm-6 gal-img">
-                        <a href="#gal3"><img src="images/g3.jpg" alt="Baggage" class="img-fluid mt-4"></a>
-                    </div>
-                    <div class="col-md-4 col-sm-6 gal-img">
-                        <a href="#gal1"><img src="images/g4.jpg" alt="Baggage" class="img-fluid mt-4"></a>
-                    </div>
-                    <div class="col-md-4 col-sm-6 gal-img">
-                        <a href="#gal2"><img src="images/g5.jpg" alt="Baggage" class="img-fluid mt-4"></a>
-                    </div>
-                    <div class="col-md-4 col-sm-6 gal-img">
-                        <a href="#gal3"><img src="images/g6.jpg" alt="Baggage" class="img-fluid mt-4"></a>
-                    </div>
-
+                    {{/each}}
                 </div>
+                
                 <!-- gallery popups -->
                 <!-- popup-->
-                <div id="gal1" class="popup-effect">
+                {{#each bannerImgs.trending}}
+                <div id="gal{{key}}" class="popup-effect">
                     <div class="popup">
-                        <img src="images/g1.jpg" alt="Popup image" class="img-fluid mt-4" />
+                        <img src="{{imgDir}}" alt="Popup image" class="img-fluid mt-4" />
                         <a class="close" href="#gallery">&times;</a>
                     </div>
                 </div>
-                <!-- //popup -->
-                <!-- popup-->
-                <div id="gal2" class="popup-effect">
-                    <div class="popup">
-                        <img src="images/g2.jpg" alt="Popup image" class="img-fluid mt-4" />
-                        <a class="close" href="#gallery">&times;</a>
-                    </div>
-                </div>
-                <!-- //popup -->
-                <!-- popup-->
-                <div id="gal3" class="popup-effect">
-                    <div class="popup">
-                        <img src="images/g3.jpg" alt="Popup image" class="img-fluid mt-4" />
-                        <a class="close" href="#gallery">&times;</a>
-                    </div>
-                </div>
+                {{/each}}
                 <!-- //popup -->
                 <!-- //gallery popups -->
 

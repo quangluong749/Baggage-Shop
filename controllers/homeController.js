@@ -1,7 +1,8 @@
-//const homeModel = require('../models/homeModel');
+const homeModel = require('../models/homeModel');
 
-exports.index = (req, res, next) => {
-    res.render('home', {haveBanner: true});
+exports.index = async (req, res, next) => {
+    const bannerImgs = await homeModel.bannerImg();
+    res.render('home', {haveBanner: true, bannerImgs});
 };
 
 

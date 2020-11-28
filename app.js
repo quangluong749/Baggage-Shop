@@ -1,11 +1,13 @@
 const express = require('express');
 const handlebar = require('express-handlebars');
-const path = require('path');
-
+require('./dsl/connectDB')
 const homeRouter = require('./routes/home');
 const shopRouter = require('./routes/shop');
 const userRoute = require('./routes/user');
 const app = express();
+
+
+
 
 // view engine setup
 app.set('view engine', 'hbs');
