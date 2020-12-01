@@ -1,7 +1,7 @@
-const connectDB = require('../dsl/connectDB');
+const { db } = require('../dsl/connectDB');
 
 exports.bannerImg = async () => {
-    const collection = await connectDB.db().collection("Baggages")
+    const collection = db().collection("Baggages")
     const imgs = await collection.find({ imgType: "banner" }).toArray();
     const bannerImgs = (() => {
         var result = {

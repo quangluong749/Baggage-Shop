@@ -6,11 +6,13 @@ const client = new MongoClient(url, { useUnifiedTopology: true });
 
 let BaggageDB;
 
-(async () => {
+async function connectDb() {
     await client.connect();
     BaggageDB = await client.db("BaggageDB");
     console.log("DB connected successfully!!");
-})();
+}
+
+connectDb();
 
 const db = () => BaggageDB;
-module.exports = { db };
+module.exports.db = db;
