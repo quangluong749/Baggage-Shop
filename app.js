@@ -1,13 +1,15 @@
 const express = require('express');
 const handlebar = require('express-handlebars');
-require('./dsl/connectDB')
+const bodyParser = require('body-parser');
+
+
 const homeRouter = require('./routes/home');
 const shopRouter = require('./routes/shop');
 const userRoute = require('./routes/user');
+require('./dsl/connectDB')
+
 const app = express();
-
-
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // view engine setup
 app.set('view engine', 'hbs');
@@ -23,6 +25,6 @@ app.use(express.static('public'));
 
 app.use('/home', homeRouter);
 app.use('/shop', shopRouter);
-app.use('/user', userRoute);
+app.use('/', userRoute);
 
 module.exports = app;

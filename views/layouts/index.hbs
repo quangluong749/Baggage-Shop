@@ -44,8 +44,8 @@
                     </div>
 
                     <div class="forms ml-auto">
-                        <a href="/user/signIn" class="btn"><span class="fa fa-user-circle-o"></span> Sign In</a>
-                        <a href="/user/signUp" class="btn"><span class="fa fa-pencil-square-o"></span> Sign Up</a>
+                        <a href="signIn" class="btn"><span class="fa fa-user-circle-o"></span> Sign In</a>
+                        <a href="signUp" class="btn"><span class="fa fa-pencil-square-o"></span> Sign Up</a>
                     </div>
                 </div>
                 <div class="nav-top-wthree">
@@ -55,17 +55,26 @@
                         <ul class="menu">
                             <li class="active"><a href="/home">Home</a></li>
                             <li><a href="/shop">Shop</a></li>                            
-                            <li><a href="/shop">Contact</a></li>
-                            <li><a href="/shop">About Us</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="#">About Us</a></li>
                         </ul>
                     </nav>
                     <!-- //nav -->
                     <div class="search-form ml-auto">
                         <div class="form-w3layouts-grid">
-                            <form action="#" method="post" class="newsletter">
-                                <input class="search" type="search" placeholder="Search here..." required="">
-                                <button class="form-control btn" value=""><span class="fa fa-search"></span></button>
+                            <form action="/" method="post" class="newsletter">
+                                <input class="search" type="text" placeholder="Search here..." required="" id="searchInput" name="search">
+                                <button class="form-control btn" value="" id="searchForm"><span class="fa fa-search"></span></button>
                             </form>
+                            <script>
+                                var searchInput = document.getElementById('searchInput');
+                                var button = document.getElementById('searchForm')
+
+                                button.AddEventListener("submit", (event) => {
+                                    if (searchInput.value == "")
+                                        event.preventDefault();
+                                })
+                            </script>
                         </div>
                     </div>
                     <div class="clearfix"></div>

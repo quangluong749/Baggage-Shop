@@ -4,18 +4,18 @@
             <div class="left-ads-display wthree">
                 <div class="row">
                     <div class="desc1-left col-md-6">
-                        <img src="images/bag1.png" class="img-fluid" alt="">
+                        <img src="{{product.imgDir}}" class="img-fluid" alt="">
                     </div>
                     <div class="desc1-right col-md-6 pl-lg-3">
-                        <h3>Lorem ipsum dolor sit amet laoret.</h3>
-                        <h5>Rs. 499 <span>599</span> <a href="#">Click for offer</a></h5>
+                        <h1>{{product.imgName}}</h1>
+                        <h5>${{product.salePrice}} <span>${{product.price}}</span> <a href="#">Click for offer</a></h5>
                         <div class="available mt-3">
                             <form action="#" method="post" class="w3pvt-newsletter subscribe-sec">
                                 <input type="email" name="Email" placeholder="Enter your email..." required="">
                                 <button class="btn submit">Check</button>
 
                             </form>
-                            <span><a href="#">login to save in wishlist </a></span>
+                            <span><a href="/signIn">login to save in wishlist </a></span>
                             <p>Lorem Ipsum has been the industry's standard since the 1500s. Praesent ullamcorper dui turpis.. </p>
                         </div>
                         <div class="share-desc mt-5">
@@ -50,7 +50,7 @@
                     <div class="col-md-3 shop-info-grid text-center mt-4">
                         <div class="product-shoe-info shoe">
                             <div class="men-thumb-item">
-                                <img src="images/b1.jpg" class="img-fluid" alt="">
+                                <img src="" class="img-fluid" alt="">
 
                             </div>
                             <div class="item-info-product">

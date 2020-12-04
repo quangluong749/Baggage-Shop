@@ -1,11 +1,12 @@
 <!--/banner-bottom -->
 <section class="banner-bottom py-5">
+    {{#with products}}
     <div class="container py-5">
         <h3 class="title-wthree mb-lg-5 mb-4 text-center">Shop Now</h3>
 
-        <!--/row1-->
+        <!--/products-->
         <div class="row shop-wthree-info text-center">
-            {{#each products.row1}}
+            {{#each results}}
             <div class="col-lg-3 shop-info-grid text-center mt-4">
                 <div class="product-shoe-info shoe">
                     <div class="men-thumb-item">
@@ -14,7 +15,7 @@
                     </div>
                     <div class="item-info-product">
                         <h4>
-                            <a href="shop/:{{_id}}">{{imgName}} </a>
+                            <a href="shop/{{_id}}">{{imgName}} </a>
                         </h4>
 
                         <div class="product_price">
@@ -23,75 +24,39 @@
                             </div>
                         </div>
                         <ul class="stars">
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star" aria-hidden="true"></span></a></li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star" aria-hidden="true"></span></a></li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
+                            <li><a href="shop/{{_id}}"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                            <li><a href="shop/{{_id}}"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                            <li><a href="shop/{{_id}}"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
                             </li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
+                            <li><a href="shop/{{_id}}"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
                             </li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star-o" aria-hidden="true"></span></a></li>
+                            <li><a href="shop/{{_id}}"><span class="fa fa-star-o" aria-hidden="true"></span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             {{/each}}
         </div>
-        <!--//row1-->
+        <!--//products-->
 
-        <!--/row2-->
-        <div class="row shop-wthree-info text-center">
-            {{#each products.row2}}
-            <div class="col-lg-3 shop-info-grid text-center mt-4">
-                <div class="product-shoe-info shoe">
-                    <div class="men-thumb-item">
-                        <img src="{{imgDir}}" class="img-fluid" alt="">
-
-                    </div>
-                    <div class="item-info-product">
-                        <h4>
-                            <a href="shop/:{{_id}}">{{imgName}}</a>
-                        </h4>
-
-                        <div class="product_price">
-                            <div class="grid-price">
-                                <span class="money"><span class="line">${{price}}</span> ${{salePrice}}</span>
-                            </div>
-                        </div>
-                        <ul class="stars">
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star" aria-hidden="true"></span></a></li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star" aria-hidden="true"></span></a></li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
-                            </li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star-half-o" aria-hidden="true"></span></a>
-                            </li>
-                            <li><a href="shop/:{{_id}}"><span class="fa fa-star-o" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-        <!--//row2-->
-
+        
+        
         <nav aria-label="Page navigation example mt-5">
             <ul class="pagination">
+                {{#if hasPrevious}}
                 <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
+                    <a class="page-link" href="?prevPage={{previous}}">Previous</a>
                 </li>
+                {{/if}}
+                {{#if hasNext}}
                 <li class="page-item">
-                    <a class="page-link" href="#">1</a>
+                    <a class="page-link" href="?nextPage={{next}}">Next</a>
                 </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                {{/if}}
             </ul>
         </nav>
     </div>
+    {{/with}}
+
 </section>
 <!-- //banner-bottom -->
