@@ -20,13 +20,30 @@ exports.products = async (prevPage, nextPage) => {
     return products;
 }
 
-exports.search = async (searchStr) => {
-    const searchProd = await mongoPaging.search(db().collection("products"), "BAG", {
-        limit: 8,
-        fields: {
-            imgName
-        }
+exports.search = async (searchStr, nextPage) => {
+    const collection = db().collection("products");
+    await collection.ensureIndex( {
+        imgName: "text"
     });
-    console.dir(searchProd);
+    const searchProd = await mongoPaging.search(collection, searchStr, { 
+        limit: 1,
+        fields: {
+            imgDir: true,
+            imgName: true, 
+            price: true,
+            salePrice: true
+        },
+        next: nextPage? nextPage : undefined
+    });
+    if (searchProd.next) { 
+        searchProd.hasNext = true;
+        searchProd.searchStr = searchStr;
+    }
+    console.log(searchProd);
+
     return searchProd;
+}
+
+exports.filter = async () => {
+    
 }

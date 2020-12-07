@@ -19,12 +19,12 @@
     </script>
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <!-- Bootstrap-Core-CSS -->
-    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
     <!-- Style-CSS -->
     <!-- font-awesome-icons -->
-    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome-icons -->
     <!-- /Fonts -->
     <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
@@ -62,19 +62,10 @@
                     <!-- //nav -->
                     <div class="search-form ml-auto">
                         <div class="form-w3layouts-grid">
-                            <form action="/" method="post" class="newsletter">
-                                <input class="search" type="text" placeholder="Search here..." required="" id="searchInput" name="search">
+                            <form action="/shop/search" method="get" class="newsletter" >
+                                <input class="search" type="search" placeholder="Search here..." required="" id="searchInput" name="searchStr">
                                 <button class="form-control btn" value="" id="searchForm"><span class="fa fa-search"></span></button>
                             </form>
-                            <script>
-                                var searchInput = document.getElementById('searchInput');
-                                var button = document.getElementById('searchForm')
-
-                                button.AddEventListener("submit", (event) => {
-                                    if (searchInput.value == "")
-                                        event.preventDefault();
-                                })
-                            </script>
                         </div>
                     </div>
                     <div class="clearfix"></div>

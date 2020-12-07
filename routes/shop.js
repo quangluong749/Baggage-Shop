@@ -1,10 +1,13 @@
 const express = require('express');
-const router = express.Router();
+
 const shopController = require('../controllers/shopController');
 const userController = require('../controllers/userController');
+const router = express.Router();
 
 router.get('/', shopController.products);
-router.get('/:id', shopController.detail);
-router.post('/', shopController.search);
+router.get('/product/:id', shopController.detail);
+router.get('/search', shopController.search);
+router.get('/filter', shopController.filter)
+
 
 module.exports = router;

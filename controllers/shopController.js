@@ -9,12 +9,14 @@ exports.detail = async (req, res, next) => {
     const product = await shopModel.detail(req.params.id);
     console.dir(product);
     res.render('single', {product});
-} 
+};
 
-// exports.search = async (req, res, next) => {
-//     const searchStr = req.body.search;
-//     const searchProd = await shopModel.search(searchStr);
+exports.search = async (req, res, next) => {
+    const searchProd = await shopModel.search(req.query.searchStr, req.query.nextPage);
     
+    res.render('shop', { products: searchProd });
+}
 
-//     res.render('signIn');
-// }
+exports.filter = async (req, res, next) => {
+    
+}

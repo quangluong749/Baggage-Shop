@@ -15,7 +15,7 @@
                     </div>
                     <div class="item-info-product">
                         <h4>
-                            <a href="shop/{{_id}}">{{imgName}} </a>
+                            <a href="/shop/product/{{_id}}">{{imgName}} </a>
                         </h4>
 
                         <div class="product_price">
@@ -50,7 +50,7 @@
                 {{/if}}
                 {{#if hasNext}}
                 <li class="page-item">
-                    <a class="page-link" href="?nextPage={{next}}">Next</a>
+                    <a class="page-link" href="?nextPage={{next}}&searchStr={{searchStr}}">Next</a>
                 </li>
                 {{/if}}
             </ul>

@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebar = require('express-handlebars');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 
 const homeRouter = require('./routes/home');
@@ -21,7 +22,7 @@ app.engine('hbs', handlebar({
     defaultLayout: 'index',
 }));
 
-app.use(express.static('public'));
+app.use(express.static(path.join('public')));
 
 app.use('/home', homeRouter);
 app.use('/shop', shopRouter);
