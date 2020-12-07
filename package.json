@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -14,15 +15,18 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/quangluong749/Baggage-shop/issues"
+    "url": "https://github.com/quangluong749/Baggage-Shop/issues"
   },
   "homepage": "https://github.com/quangluong749/Baggage-Shop#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "mongo-cursor-pagination": "^7.3.1",
-    "mongodb": "^3.6.3",
+    "mongodb": "^3.6.3"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.6"
   }
 }

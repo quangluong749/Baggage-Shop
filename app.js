@@ -3,6 +3,8 @@ const handlebar = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+require('./dsl/connectDB');
+
 
 const homeRouter = require('./routes/home');
 const shopRouter = require('./routes/shop');

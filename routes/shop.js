@@ -7,7 +7,6 @@ const router = express.Router();
 router.get('/', shopController.products);
 router.get('/product/:id', shopController.detail);
 router.get('/search', shopController.search);
-router.get('/filter', shopController.filter)
-
+router.get('/filter', shopController.filter);
 
 module.exports = router;

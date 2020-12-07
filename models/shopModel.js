@@ -26,7 +26,7 @@ exports.search = async (searchStr, nextPage) => {
         imgName: "text"
     });
     const searchProd = await mongoPaging.search(collection, searchStr, { 
-        limit: 1,
+        limit: 4,
         fields: {
             imgDir: true,
             imgName: true, 
@@ -36,14 +36,33 @@ exports.search = async (searchStr, nextPage) => {
         next: nextPage? nextPage : undefined
     });
     if (searchProd.next) { 
-        searchProd.hasNext = true;
-        searchProd.searchStr = searchStr;
+        const nextSearch = mongoPaging.search(collection, searchStr, { 
+            limit: 8,
+            next: searchProd.next
+        });
+        if (nextSearch.results) { 
+            searchProd.hasNext = true;
+            searchProd.searchStr = searchStr;
+        }
     }
     console.log(searchProd);
 
     return searchProd;
 }
 
-exports.filter = async () => {
-    
+exports.filter = async (gender, prevPage, nextPage) => {
+    const filterProd = await mongoPaging.find(db().collection("products"), {
+        query: {
+            gender: gender
+        },
+        limit: 8,
+        sortAscending: true,
+        next: nextPage? nextPage : undefined,
+        previous: prevPage? prevPage : undefined
+    });
+    if (filterProd.hasNext || filterProd.hasPrevious){
+        filterProd.gender = gender;
+    }
+
+    return filterProd;
 }

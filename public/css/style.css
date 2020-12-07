@@ -1414,6 +1414,37 @@ h3.sub-w3ls-headf {
     color: #888;
 }
 
+/* Filter */
+form.filter-btn { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+select.gender-filter {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    color: #999;
+}
+select.gender-filter:focus {
+    outline: none !important;
+    border: 1px solid #b0b5bb;
+}
+button.item-filter {
+    padding: 0.5rem 1.5rem;
+    background-color: #dde5ec;
+    border: none;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+    color: #9aa0a3;
+    font-size: 1.25rem;
+}
+button.item-filter:hover {
+    background-color: #92989e;
+    color: #222222;
+    transition: background-color, color 0.3 ease;
+}
+
 /* //social icons */
 /* footer */
 /*--//footer --*/

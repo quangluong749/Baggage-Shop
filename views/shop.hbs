@@ -3,7 +3,16 @@
     {{#with products}}
     <div class="container py-5">
         <h3 class="title-wthree mb-lg-5 mb-4 text-center">Shop Now</h3>
-
+        <!--/Filter -->
+            <form class="filter-btn" action="/shop/filter" method="get">
+                <select class="gender-filter" name="gender" required>
+                    <option disabled selected value>Select a gender</option>    
+                    <option value="men">men</option>
+                    <option value="women">women</option>
+                </select>
+                <button type="submit" class="item-filter">Filter</button>
+            </form>
+        <!--/Filter -->
         <!--/products-->
         <div class="row shop-wthree-info text-center">
             {{#each results}}
@@ -45,12 +54,28 @@
             <ul class="pagination">
                 {{#if hasPrevious}}
                 <li class="page-item">
-                    <a class="page-link" href="?prevPage={{previous}}">Previous</a>
+                    {{#if searchStr}}
+                        <a class="page-link" href="?prevPage={{previous}}&searchStr={{searchStr}}">Previous</a>
+                    {{else}}
+                        {{#if gender}}
+                            <a class="page-link" href="?prevPage={{previous}}&gender={{gender}}">Previous</a>
+                        {{else}}
+                            <a class="page-link" href="?prevPage={{previous}}">Previous</a>
+                        {{/if}}
+                    {{/if}}
                 </li>
                 {{/if}}
                 {{#if hasNext}}
                 <li class="page-item">
-                    <a class="page-link" href="?nextPage={{next}}&searchStr={{searchStr}}">Next</a>
+                    {{#if searchStr}}
+                        <a class="page-link" href="?nextPage={{next}}&searchStr={{searchStr}}">Next</a>
+                    {{else}}
+                        {{#if gender}}
+                            <a class="page-link" href="?nextPage={{next}}&gender={{gender}}">Next</a>
+                        {{else}}
+                            <a class="page-link" href="?nextPage={{next}}">Next</a>
+                        {{/if}}
+                    {{/if}}
                 </li>
                 {{/if}}
             </ul>

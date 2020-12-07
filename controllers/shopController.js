@@ -18,5 +18,7 @@ exports.search = async (req, res, next) => {
 }
 
 exports.filter = async (req, res, next) => {
-    
+    const filterProd = await shopModel.filter(req.query.gender, req.query.prevPage, req.query.nextPage);
+
+    res.render('shop', {products: filterProd});
 }
