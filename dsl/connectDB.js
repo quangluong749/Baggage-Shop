@@ -15,5 +15,6 @@ let BaggageDB;
     console.log("DB connected successfully!!");
 })();
 
+console.log("Connecting DB...");
 const db = () => BaggageDB;
 module.exports.db = db;

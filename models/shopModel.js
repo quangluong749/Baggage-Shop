@@ -6,7 +6,8 @@ const { db } = require('../dsl/connectDB');
 exports.detail = async (id) => {
     const collection = db().collection("products");
     const product = await collection.findOne({ _id: ObjectId(id) });
-    return product;
+    const relatedProd = await collection.find( { _id: {$ne: product._id}, category: product.category }).limit(4).toArray();
+    return { product, relatedProd };
 }
 
 exports.products = async (prevPage, nextPage) => {
@@ -23,13 +24,13 @@ exports.products = async (prevPage, nextPage) => {
 exports.search = async (searchStr, nextPage) => {
     const collection = db().collection("products");
     await collection.ensureIndex( {
-        imgName: "text"
+        name: "text"
     });
     const searchProd = await mongoPaging.search(collection, searchStr, { 
         limit: 4,
         fields: {
-            imgDir: true,
-            imgName: true, 
+            img: true,
+            name: true, 
             price: true,
             salePrice: true
         },
@@ -45,15 +46,14 @@ exports.search = async (searchStr, nextPage) => {
             searchProd.searchStr = searchStr;
         }
     }
-    console.log(searchProd);
-
+    
     return searchProd;
 }
 
-exports.filter = async (gender, prevPage, nextPage) => {
+exports.filter = async (category, prevPage, nextPage) => {
     const filterProd = await mongoPaging.find(db().collection("products"), {
         query: {
-            gender: gender
+            category: category
         },
         limit: 8,
         sortAscending: true,
@@ -61,7 +61,7 @@ exports.filter = async (gender, prevPage, nextPage) => {
         previous: prevPage? prevPage : undefined
     });
     if (filterProd.hasNext || filterProd.hasPrevious){
-        filterProd.gender = gender;
+        filterProd.category = category;
     }
 
     return filterProd;

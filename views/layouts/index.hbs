@@ -44,8 +44,20 @@
                     </div>
 
                     <div class="forms ml-auto">
-                        <a href="signIn" class="btn"><span class="fa fa-user-circle-o"></span> Sign In</a>
-                        <a href="signUp" class="btn"><span class="fa fa-pencil-square-o"></span> Sign Up</a>
+                        {{#if user}}
+                            <div class="dropdown">
+                                <img src="{{user.avatar}}" class="user-avatar">
+                                <a href='#' class="username">{{user.username}}</a>
+                                <div class="dropdown-content">
+                                    <a href="/setting">My Setting</a>
+                                    <a href="/collection">My Collection</a>
+                                    <a href="/logout">Log Out</a>
+                                </div>                                
+                            </div>
+                        {{else}}
+                            <a href="/signin" class="btn"><span class="fa fa-user-circle-o"></span> Sign In</a>
+                            <a href="/signup" class="btn"><span class="fa fa-pencil-square-o"></span> Sign Up</a>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="nav-top-wthree">
@@ -84,5 +96,6 @@
     {{{body}}}
 
     {{> footer}}
+
 </body>
 </html>
