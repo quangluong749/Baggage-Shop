@@ -1,0 +1,41 @@
+<section class="banner-bottom py-5 my-collection">
+    <div class="left-ads-display wthree">
+        {{#each myProducts}}
+        <div class="row-prod">
+            <div class="img-prod">
+                <img src="{{img}}">
+            </div>
+            <div class="info-prod">
+                <h4>{{name}}</h4>
+                <div class="group-btn">
+                <div class="count-btn">
+                    <button class="sub-btn">-</button>
+                    <input type="text" value="1" readonly>
+                    <button class="add-btn">+</button>
+                </div>
+                <div class="del-btn">
+                    <button>Delete</button>
+                </div>
+            </div>
+            </div>
+            <div class="price-prod">
+                <h4>{{salePrice}} $</h4>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <form class="payment">
+        <div class="price-total">
+            <span>Total</span>
+            <div>
+            <span class="price-value" id="totalPrice">123233</span>
+            <span>$</span>
+            </div>
+        </div>
+            <button class="buy-btn">Buy now</button>
+    </form>
+</section>
+<script>
+    
+</script>

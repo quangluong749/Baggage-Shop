@@ -5,7 +5,7 @@
         <h3 class="title-wthree mb-lg-5 mb-4 text-center">Shop Now</h3>
         <!--/Filter -->
             <form class="filter-btn" action="/shop/filter" method="get">
-                <select class="gender-filter" name="gender" required>
+                <select class="gender-filter" name="category" required>
                     <option disabled selected value>Select a gender</option>    
                     <option value="men">men</option>
                     <option value="women">women</option>
@@ -19,12 +19,12 @@
             <div class="col-lg-3 shop-info-grid text-center mt-4">
                 <div class="product-shoe-info shoe">
                     <div class="men-thumb-item">
-                        <img src="{{imgDir}}" class="img-fluid" alt="">
+                        <img src="{{img}}" class="img-fluid" alt="">
 
                     </div>
                     <div class="item-info-product">
                         <h4>
-                            <a href="/shop/product/{{_id}}">{{imgName}} </a>
+                            <a href="/shop/product/{{_id}}">{{name}} </a>
                         </h4>
 
                         <div class="product_price">
@@ -57,8 +57,8 @@
                     {{#if searchStr}}
                         <a class="page-link" href="?prevPage={{previous}}&searchStr={{searchStr}}">Previous</a>
                     {{else}}
-                        {{#if gender}}
-                            <a class="page-link" href="?prevPage={{previous}}&gender={{gender}}">Previous</a>
+                        {{#if category}}
+                            <a class="page-link" href="?prevPage={{previous}}&category={{category}}">Previous</a>
                         {{else}}
                             <a class="page-link" href="?prevPage={{previous}}">Previous</a>
                         {{/if}}
@@ -70,8 +70,8 @@
                     {{#if searchStr}}
                         <a class="page-link" href="?nextPage={{next}}&searchStr={{searchStr}}">Next</a>
                     {{else}}
-                        {{#if gender}}
-                            <a class="page-link" href="?nextPage={{next}}&gender={{gender}}">Next</a>
+                        {{#if category}}
+                            <a class="page-link" href="?nextPage={{next}}&category={{category}}">Next</a>
                         {{else}}
                             <a class="page-link" href="?nextPage={{next}}">Next</a>
                         {{/if}}

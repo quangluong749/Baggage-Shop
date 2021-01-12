@@ -4,18 +4,25 @@
             <div class="left-ads-display wthree">
                 <div class="row">
                     <div class="desc1-left col-md-6">
-                        <img src="{{product.imgDir}}" class="img-fluid" alt="">
+                        <img src="{{product.img}}" class="img-fluid" alt="">
                     </div>
                     <div class="desc1-right col-md-6 pl-lg-3">
-                        <h1>{{product.imgName}}</h1>
+                        <h1>{{product.name}}</h1>
                         <h5>${{product.salePrice}} <span>${{product.price}}</span> <a href="#">Click for offer</a></h5>
                         <div class="available mt-3">
+                            {{#if user}}
+                            <form action="/add-product/{{product._id}}" method="get" class="w3pvt-newsletter subscribe-sec">
+                                <button class="btn submit">save in wishlist</button>
+                            </form>
+                            <div style="margin-bottom: 20px;"></div>
+                            {{else}}
                             <form action="#" method="post" class="w3pvt-newsletter subscribe-sec">
                                 <input type="email" name="Email" placeholder="Enter your email..." required="">
                                 <button class="btn submit">Check</button>
-
                             </form>
-                            <span><a href="/signIn">login to save in wishlist </a></span>
+                            <span><a href="/signin">login to save in wishlist </a></span>
+                            {{/if}}
+
                             <p>Lorem Ipsum has been the industry's standard since the 1500s. Praesent ullamcorper dui turpis.. </p>
                         </div>
                         <div class="share-desc mt-5">
@@ -45,22 +52,22 @@
 
 
                 <!--/row-->
-                <h3 class="title-wthree-single my-lg-5 my-4 text-left">Featured Bags</h3>
+                <h3 class="title-wthree-single my-lg-5 my-4 text-left">Related Bags</h3>
                 <div class="row shop-wthree-info text-center">
+                    {{#each relatedProd}}
                     <div class="col-md-3 shop-info-grid text-center mt-4">
                         <div class="product-shoe-info shoe">
                             <div class="men-thumb-item">
-                                <img src="" class="img-fluid" alt="">
-
+                                <img src="{{img}}" class="img-fluid" alt="">
                             </div>
                             <div class="item-info-product">
                                 <h4>
-                                    <a href="single.html">Messenger Bag </a>
+                                    <a href="/shop/product/{{_id}}">{{name}}</a>
                                 </h4>
 
                                 <div class="product_price">
                                     <div class="grid-price">
-                                        <span class="money"><span class="line">$799</span> $675.00</span>
+                                        <span class="money"><span class="line">${{price}}</span> ${{salePrice}}</span>
                                     </div>
                                 </div>
                                 <ul class="stars">
@@ -73,7 +80,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 shop-info-grid text-center mt-4">
+                    {{/each}}
+                    {{!-- <div class="col-md-3 shop-info-grid text-center mt-4">
                         <div class="product-shoe-info shoe">
                             <div class="men-thumb-item">
                                 <img src="images/b2.jpg" class="img-fluid" alt="">
@@ -150,7 +158,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <!--//row-->
