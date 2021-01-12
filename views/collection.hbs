@@ -10,7 +10,7 @@
                 <div class="group-btn">
                 <div class="count-btn">
                     <button class="sub-btn">-</button>
-                    <input type="text" value="1" readonly>
+                    <input type="text" value="1" class="count-product" readonly>
                     <button class="add-btn">+</button>
                 </div>
                 <div class="del-btn">
@@ -19,17 +19,17 @@
             </div>
             </div>
             <div class="price-prod">
-                <h4>{{salePrice}} $</h4>
+                <h4 class="prodPrice">{{salePrice}} $</h4>
             </div>
         </div>
         {{/each}}
     </div>
 
-    <form class="payment">
+    <form action="#" class="payment">
         <div class="price-total">
             <span>Total</span>
             <div>
-            <span class="price-value" id="totalPrice">123233</span>
+            <span class="price-value" id="total-price">123233</span>
             <span>$</span>
             </div>
         </div>
@@ -37,5 +37,54 @@
     </form>
 </section>
 <script>
-    
+    const products = [];
+    {{#each myProducts}}
+    products.push({
+        price: {{salePrice}},
+        quantity: 1
+    })
+    {{/each}};
+
+    const totalPrice = document.getElementById('total-price');
+    const delBtn = document.getElementsByClassName('del-btn');
+    const decBtn = document.getElementsByClassName('sub-btn');
+    const incBtn = document.getElementsByClassName('add-btn');
+    const countProd = document.getElementsByClassName('count-product')
+    const subPrice = document.getElementsByClassName('prodPrice');
+
+    function updateQuantity(index, quantity) {
+        if (quantity < 1 || quantity > 10)
+            return;
+        products[index].quantity = quantity;
+        console.log("update quantity");
+        render();
+    }
+
+    for (let i = 0; i < incBtn.length; i++) {
+            console.log("for Loop!")
+            decBtn[i].addEventListener('click', () => {
+                updateQuantity(i, products[i].quantity - 1);
+            });
+            incBtn[i].addEventListener('click', () => {
+                updateQuantity(i, products[i].quantity + 1);
+            })
+        }
+
+    function render() {
+        let total = 0;
+        products.forEach(prod => {
+            total += prod.price * prod.quantity;
+        })
+        
+        console.log("Product", products);
+        
+
+        for (let i = 0; i < incBtn.length; i++) {
+            countProd[i].value = products[i].quantity;
+            subPrice[i].innerHTML = products[i].quantity * products[i].price;
+        }
+        totalPrice.innerHTML = total;
+    }
+    render();
+
 </script>
