@@ -5,10 +5,16 @@ const homeController = require("../controllers/homeController");
 const passport = require('../passport/index');
 
 router.get('/signin', userController.signIn);
+
+// Register --
 router.get('/signup', userController.signUp);
+router.post('/add-user', userController.addUser);
+router.get('/account/confirmation/:tokenQuery', userController.verifyAccount);
+
+// -- Register 
+
 router.get('/contact', userController.contact);
 router.get('/', homeController.index);
-router.post('/add-user', userController.addUser);
 router.post('/auth', passport.authenticate('local', { 
     successRedirect: '/shop',
     failureRedirect: '/signin',
