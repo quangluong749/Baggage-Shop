@@ -6,6 +6,7 @@ exports.products = async (req, res, next) => {
 };
 
 exports.detail = async (req, res, next) => {
+    console.log(req.params.id);
     const { product, relatedProd } = await shopModel.detail(req.params.id);
     res.render('single', { product, relatedProd });
 };

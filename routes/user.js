@@ -9,7 +9,6 @@ router.get('/signin', userController.signIn);
 // Register --
 router.get('/signup', userController.signUp);
 router.post('/add-user', userController.addUser);
-router.get('/account/confirmation/:tokenQuery', userController.verifyAccount);
 
 // -- Register 
 

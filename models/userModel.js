@@ -1,89 +1,29 @@
 const bcrypt = require('bcrypt')
-const {
-    ObjectId
-} = require('mongodb');
+const { ObjectId } = require('mongodb');
 
-const {
-    db
-} = require('../dsl/connectDB');
-const shopModel = require('./shopModel');
-
-const nameCollection = "users";
-const nameCollectionToken = "tokens";
-var mongoose = require("mongoose");
-
-var schemaUser = new mongoose.Schema({
-    username: String,
-    email: {
-        type: String,
-        unique: true
-    },
-    isVerified: {
-        type: Boolean,
-        default: false
-    },
-    phone: {
-        type: Number,
-        default: null
-    },
-    avatar: {
-        type: String,
-        default: ""
-    },
-    permission: {
-        type: Number,
-        default: 1
-    },
-    _collection: {
-        type: Array,
-        default: []
-    },
-    password: String,
-    passwordResetToken: String,
-    passwordResetExpires: Date
-});
-
-const schemaToken = new mongoose.Schema({
-    _userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: nameCollection
-    },
-    token: {
-        type: String,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        required: true,
-        default: Date.now,
-        expires: 43200
-    }
-});
-
-const User = mongoose.model(nameCollection, schemaUser);
-const Token = mongoose.model(nameCollectionToken, schemaToken);
+const { db } = require('../dsl/connectDB');
 
 exports.addUser = async (newUser) => {
     const saltRounds = 10;
 
     bcrypt.genSalt(saltRounds, (err, salt) => {
         bcrypt.hash(newUser.password, salt, async (err, hash) => {
-            const user = new User({
+            const user = {
                 avatar: '/images/users/default.png',
                 username: newUser.username,
                 password: hash,
                 email: newUser.email,
                 phone: newUser.phone,
-            });
+                collection: []
+            };
 
-            return await db().collection(nameCollection).insertOne(user);
+            return await db().collection("users").insertOne(user);
         })
     });
-}
+} // bên m ngộ qa phải save ừ đúng r :(())
 
 exports.checkCredential = async (username, password) => {
-    const user = await db().collection(nameCollection).findOne({
+    const user = await db().collection("users").findOne({
         username: username
     });
     if (!user)
@@ -94,19 +34,19 @@ exports.checkCredential = async (username, password) => {
     return false;
 }
 
-exports.getUser = (id) => db().collection(nameCollection).findOne({
+exports.getUser = (id) => db().collection("users").findOne({
     _id: ObjectId(id)
 });
-exports.getUserByEmail = (email) => db().collection(nameCollection).findOne({
-    email: email
-});
 
-exports.addProductToCollection = async (userId, id) => {
+exports.addProductToCollection = async (userId, id) => { //k cos collection trong db
     const user = await this.getUser(userId);
-    for (var i = 0; i < user.collection.length; i++)
-        if (user.collection[i] == id)
-            return;
-    await db().collection(nameCollection).updateOne({
+    // user tim k ra
+    console.log(user);
+    if (user.collection.length)
+        for (var i = 0; i < user.collection.length; i++)
+            if (user.collection[i] == id)
+                return;
+    await db().collection("users").updateOne({
         _id: ObjectId(userId)
     }, {
         $push: {

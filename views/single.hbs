@@ -4,10 +4,10 @@
             <div class="left-ads-display wthree">
                 <div class="row">
                     <div class="desc1-left col-md-6">
-                        <img src="{{product.img}}" class="img-fluid" alt="">
+                        <img src="/images/products/{{product._id}}/main.{{product.imgDir}}" class="img-fluid" alt="">
                     </div>
                     <div class="desc1-right col-md-6 pl-lg-3">
-                        <h1>{{product.name}}</h1>
+                        <h1>{{product.imgName}}</h1>
                         <h5>${{product.salePrice}} <span>${{product.price}}</span> <a href="#">Click for offer</a></h5>
                         <div class="available mt-3">
                             {{#if user}}
