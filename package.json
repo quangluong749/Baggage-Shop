@@ -20,14 +20,21 @@
   "homepage": "https://github.com/quangluong749/Baggage-Shop#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mongo-cursor-pagination": "^7.3.1",
     "mongodb": "^3.6.3",
+<<<<<<< HEAD
     "multer": "^1.4.2",
+=======
+    "mongoose": "^5.11.11",
+    "nodemailer": "^6.4.17",
+>>>>>>> d3cb7a69f20e0f200716a534c97b85404d0a87ba
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
