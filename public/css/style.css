@@ -1618,6 +1618,36 @@ div .del-btn {
     background: rgb(255, 15, 30);
 }
 
+.field-group label {
+    background: #74d2e7;
+    padding: 10px 20px;
+}
+.field-group label:hover {
+    cursor: pointer;
+    background: #22c0e4;
+}
+.field-group label span {
+    color: rgb(255, 255, 255);
+}
+
+.btn-save-change {
+    background: #74d2e7;
+    color: #fff;
+    padding: 13px 10px;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    display: block;
+    margin: 15px 0px;
+    text-transform: uppercase;
+    outline: none;
+}
+.btn-save-change:hover {
+    cursor: pointer;
+    background: #22c0e4;
+}
+
 
 /* //social icons */
 /* footer */

@@ -56,3 +56,11 @@ exports.showCollection = async (userId) => {
     }
     return myProducts;
 }
+
+exports.updateProfile = (userId, newProfile) => {
+    return db().collection("users").updateOne( { _id: ObjectId(userId) }, { $set: {
+        avatar: newProfile.avatar,
+        email: newProfile.email,
+        phone: newProfile.phone
+    } } ) 
+}

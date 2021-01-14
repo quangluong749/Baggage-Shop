@@ -14,8 +14,9 @@ router.post('/auth', passport.authenticate('local', {
     failureRedirect: '/signin',
     failureFlash: false }));
 router.get('/logout', userController.logOut);
-router.post('/setting', userController.setting);
+router.get('/setting', userController.setting);
 router.get('/add-product/:id', userController.addProduct);
 router.get('/collection', userController.collection);
+router.post('/update-profile', userController.updateProfile);
 
 module.exports = router;
