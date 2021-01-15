@@ -5,35 +5,34 @@
                 <div class="text-center icon">
                     <span class="fa fa-user-circle-o"></span>
                 </div>
-                <div class="text-center">
-                    <p class="login-box-msg">{{notification}} <br /> ... </p>
-                </div>
                 <div class="content-bottom">
-                    <form action="/add-user" method="post">
+                    <form action="/add-user" method="post" >
                         <div class="field-group">
                             <div class="content-input-field">
-                                <input name="username" id="text1" type="text" value="" placeholder="User Name" required="">
+                                <input name="username" id="username" type="text" value="" placeholder="User Name" required="" onchange="checkUsername(this.value);">
+                                <span id="warning-username" style="color: red; font-size: 1rem;"></span>
                             </div>
                         </div>
                         <div class="field-group">
 
                             <div class="content-input-field">
-                                <input name="email" id="text1" type="email" value="" placeholder="User Email" required="">
+                                <input name="email" id="email" type="email" value="" placeholder="User Email" required="">
                             </div>
                         </div>
                         <div class="field-group">
 
                             <div class="content-input-field">
-                                <input name="phone" id="text3" type="text" value="" placeholder="User Phone" required="">
+                                <input name="phone" id="phone" type="text" value="" placeholder="User Phone" required="">
                             </div>
                         </div>
                         <div class="field-group">
                             <div class="content-input-field">
-                                <input name="password" id="myInput" type="Password" placeholder="Password">
+                                <input name="password" id="password" type="Password" placeholder="Password" required="" onchange='checkPassword(this.value);'>
+                                <span id="warning-password" style="color: red; font-size: 1rem;"></span>
                             </div>
                         </div>
                         <div class="content-input-field">
-                            <button type="submit" class="btn">Sign Up</button>
+                            <button class="btn" id="sign-up" onsubmit='checkForm(this)'>Sign Up</button>
                         </div>
                         <div class="list-login-bottom text-center mt-lg-5 mt-4">
                             <a href="#" class="">By clicking Signup, I agree to your terms</a>
@@ -45,3 +44,33 @@
     </section>
 
     <!-- /sign up -->
+    <script>
+        function checkUsername(username) {
+            $.getJSON('/api/users/check-username', {username}, (data) => {
+                if (data) {
+                    $('#warning-username').html('Username is already taken!');
+                    return false;
+                } else {
+                    $('#warning-username').remove();
+                    return true;
+                }
+            })
+        }
+
+        function checkPassword(password) {
+            if (password.length < 6) {
+                $('#warning-password').html('Your password must be at least 6 characters long');
+                return false;
+            } else {
+                $('#warning-password').remove();
+                return true;
+            }
+        }
+                            
+        function checkForm(event) {
+            if (!checkUsername($('#username').val()) 
+            || !checkPassword($('#password').val()))
+            event.preventDefault()
+        }
+
+    </script>

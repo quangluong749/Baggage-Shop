@@ -76,3 +76,10 @@ exports.updateProfile = (userId, newProfile) => {
         phone: newProfile.phone
     } } ) 
 }
+
+exports.isUsernameExist = async (username) => {
+    const user = await db().collection("users").findOne({ username: username });
+    if (user)
+        return true;
+    return false;
+}
