@@ -42,10 +42,9 @@ exports.addProductToCollection = async (userId, id) => { //k cos collection tron
     const user = await this.getUser(userId);
     // user tim k ra
     console.log(user);
-    if (user.collection.length)
-        for (var i = 0; i < user.collection.length; i++)
-            if (user.collection[i] == id)
-                return;
+    for (var i = 0; i < user.collection.length; i++)
+        if (user.collection[i] == id)
+            return;
     await db().collection("users").updateOne({
         _id: ObjectId(userId)
     }, {

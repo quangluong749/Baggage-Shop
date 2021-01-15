@@ -18,7 +18,7 @@ exports.detail = async (id) => {
 
 exports.products = async (prevPage, nextPage) => {
     const products = await mongoPaging.find(db().collection("products"), {
-        limit: 1,
+        limit: 8,
         sortAscending: true,
         next: nextPage? nextPage : undefined,
         previous: prevPage? prevPage : undefined
