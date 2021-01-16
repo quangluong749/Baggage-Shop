@@ -23,6 +23,7 @@ exports.products = async (prevPage, nextPage) => {
 }
 
 exports.search = async (searchStr, nextPage) => {
+    console.log(searchStr);
     const collection = db().collection("products");
     await collection.ensureIndex( {
         imgName: "text"
