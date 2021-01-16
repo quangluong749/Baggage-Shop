@@ -1,12 +1,13 @@
 <section class="banner-bottom py-5 my-collection">
-    <div class="left-ads-display wthree">
+    <div class="left-ads-display wthree" id="myCollection">
         {{#each myProducts}}
         <div class="row-prod">
+            <input type='text' value={{_id}} class="store-productId" style="display: none;">
             <div class="img-prod">
-                <img src="{{img}}">
+                <img src="/images/products/{{_id}}/main.{{imgDir}}">
             </div>
             <div class="info-prod">
-                <h4>{{name}}</h4>
+                <h4>{{imgName}}</h4>
                 <div class="group-btn">
                 <div class="count-btn">
                     <button class="sub-btn">-</button>
@@ -14,7 +15,7 @@
                     <button class="add-btn">+</button>
                 </div>
                 <div class="del-btn">
-                    <button>Delete</button>
+                    <a href="/delete-product?id={{_id}}">Delete</a>
                 </div>
             </div>
             </div>
@@ -46,22 +47,20 @@
     {{/each}};
 
     const totalPrice = document.getElementById('total-price');
-    const delBtn = document.getElementsByClassName('del-btn');
     const decBtn = document.getElementsByClassName('sub-btn');
     const incBtn = document.getElementsByClassName('add-btn');
     const countProd = document.getElementsByClassName('count-product')
     const subPrice = document.getElementsByClassName('prodPrice');
+    const productId = document.getElementsByClassName('store-productId');
 
     function updateQuantity(index, quantity) {
         if (quantity < 1 || quantity > 10)
             return;
         products[index].quantity = quantity;
-        console.log("update quantity");
         render();
     }
 
-    for (let i = 0; i < incBtn.length; i++) {
-            console.log("for Loop!")
+    for (let i = 0; i < products.length; i++) {
             decBtn[i].addEventListener('click', () => {
                 updateQuantity(i, products[i].quantity - 1);
             });
@@ -75,14 +74,12 @@
         products.forEach(prod => {
             total += prod.price * prod.quantity;
         })
-        
-        console.log("Product", products);
-        
 
-        for (let i = 0; i < incBtn.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             countProd[i].value = products[i].quantity;
             subPrice[i].innerHTML = products[i].quantity * products[i].price;
         }
+
         totalPrice.innerHTML = total;
     }
     render();

@@ -9,7 +9,6 @@ router.get('/signin', userController.signIn);
 // Register --
 router.get('/signup', userController.signUp);
 router.post('/add-user', userController.addUser);
-router.get('/account/confirmation/:tokenQuery', userController.verifyAccount);
 
 // -- Register 
 
@@ -24,5 +23,7 @@ router.get('/setting', userController.setting);
 router.get('/add-product/:id', userController.addProduct);
 router.get('/collection', userController.collection);
 router.post('/update-profile', userController.updateProfile);
+router.get('/delete-product', userController.delProduct);
+
 
 module.exports = router;

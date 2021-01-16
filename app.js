@@ -9,6 +9,7 @@ const passport = require('./passport/index');
 const homeRouter = require('./routes/home');
 const shopRouter = require('./routes/shop');
 const userRoute = require('./routes/user');
+const userApiRouter = require('./routes/api/user');
 
 // Connect to Database
 require('./dsl/connectDB');
@@ -41,4 +42,5 @@ app.use((req, res, next) => {
 app.use('/home', homeRouter);
 app.use('/shop', shopRouter);
 app.use('/', userRoute);
+app.use('/api/users', userApiRouter);
 module.exports = app;

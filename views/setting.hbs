@@ -45,7 +45,7 @@
 <script>
     function previewFile(input) {
         var file = $("input[type=file]").get(0).files[0];
-        var pattern = '/image-*/';
+        var pattern = /image-*/;
 
         if (file && file.type.match(pattern)) {
             var reader = new FileReader();

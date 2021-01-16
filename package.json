@@ -29,12 +29,9 @@
     "express-session": "^1.17.1",
     "mongo-cursor-pagination": "^7.3.1",
     "mongodb": "^3.6.3",
-<<<<<<< HEAD
-    "multer": "^1.4.2",
-=======
     "mongoose": "^5.11.11",
+    "multer": "^1.4.2",
     "nodemailer": "^6.4.17",
->>>>>>> d3cb7a69f20e0f200716a534c97b85404d0a87ba
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
