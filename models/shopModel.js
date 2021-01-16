@@ -5,8 +5,9 @@ const { db } = require('../dsl/connectDB');
 
 exports.detail = async (id) => {
     const collection = db().collection("products");
+    console.log(id);
     const product = await collection.findOne({ _id: ObjectId(id) });
-    const relatedProd = await collection.find( { _id: {$ne: product._id}, category: product.category }).limit(4).toArray();
+    const relatedProd = await collection.find( { _id: {$ne: ObjectId(product._id)}, category: product.category }).limit(4).toArray();
     return { product, relatedProd };
 }
 
@@ -24,18 +25,19 @@ exports.products = async (prevPage, nextPage) => {
 exports.search = async (searchStr, nextPage) => {
     const collection = db().collection("products");
     await collection.ensureIndex( {
-        name: "text"
+        imgName: "text"
     });
     const searchProd = await mongoPaging.search(collection, searchStr, { 
         limit: 4,
         fields: {
-            img: true,
-            name: true, 
+            imgDir: true,
+            imgName: true, 
             price: true,
             salePrice: true
         },
         next: nextPage? nextPage : undefined
     });
+    console.log(searchProd); 
     if (searchProd.next) { 
         const nextSearch = mongoPaging.search(collection, searchStr, { 
             limit: 8,

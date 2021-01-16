@@ -38,8 +38,10 @@ exports.getUser = (id) => db().collection("users").findOne({
     _id: ObjectId(id)
 });
 
-exports.addProductToCollection = async (userId, id) => {
+exports.addProductToCollection = async (userId, id) => { 
     const user = await this.getUser(userId);
+    // user tim k ra
+    console.log(user);
     for (var i = 0; i < user.collection.length; i++)
         if (user.collection[i]._id == id)
             return;
