@@ -14,7 +14,8 @@ exports.addUser = async (newUser) => {
                 password: hash,
                 email: newUser.email,
                 phone: newUser.phone,
-                collection: []
+                collection: [],
+                isActive: true
             };
 
             return await db().collection("users").insertOne(user);
